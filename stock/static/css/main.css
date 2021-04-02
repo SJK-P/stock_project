@@ -1,0 +1,20 @@
+.card {
+    padding: 30px;
+}
+
+.card-menu {
+    margin-bottom: -25px;
+    margin-left: 6px;
+}
+
+.card-body {
+    padding: 2rem 1rem;
+}
+
+.content {
+    padding: 20px;
+}
+
+.col-4 {
+    margin-block: 12px;
+}

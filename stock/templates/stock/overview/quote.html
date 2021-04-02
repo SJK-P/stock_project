@@ -1,0 +1,52 @@
+{% extends "stock/base.html" %} 
+{% block title %}My Blog{% endblock %} 
+{% block card_title %}Apple Inc Stock{% endblock %}
+{% block content %}
+
+    <div class="container">
+      <div class="row">
+        <div class="col-4">
+            <h6 class="text-secondary"> AAPL Price﻿ </h6>
+            <h4>{{ price }}</h4>
+        </div>
+        <div class="col-4">
+            <h6 class="text-secondary"> Market Cap﻿ </h6>
+            <h4>{{ marketCap }}</h4>
+        </div>
+        <div class="col-4">
+            <h6 class="text-secondary"> Day Low </h6> 
+            <h4>{{ dayL }}</h4>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-4">
+            <h6 class="text-secondary"> Day High </h6>
+            <h4>{{ dayH }}</h4>
+
+        </div>
+        <div class="col-4">
+            <h6 class="text-secondary"> Year Low </h6>
+            <h4>{{ yearL }}</h4>
+        </div>
+        <div class="col-4">
+            <h6 class="text-secondary"> Year High </h6>
+            <h4>{{ yearH }}</h4>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-4">
+            <h6 class="text-secondary"> Earnings Announcement </h6>
+            <h4>{{ earnAnnounce }}</h4>
+        </div>
+        <div class="col-4">
+            <h6 class="text-secondary"> Previous Price </h6>
+            <h4>{{ prePrice }}</h4>
+        </div>
+        <div class="col-4">
+            <h6 class="text-secondary"> Exchange </h6>
+            <h4>{{ exchange }}</h4>
+        </div>
+      </div>
+    </div>
+
+{% endblock %}
