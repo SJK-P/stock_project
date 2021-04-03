@@ -13,3 +13,21 @@ def date_format(value, format_string):
     except:
         return ''
 
+
+@register.filter(name='cap_format')
+def cap_format(value):
+    tril = 1000000000000
+    number = value/tril
+    return round(number, 2)
+
+
+@register.filter(is_safe=True)
+def add_ch(value, ch):
+    return ch+str(value)
+
+@register.filter(is_safe=True)
+def add_ch_end(value, ch):
+    return str(value)+ch
+
+
+        

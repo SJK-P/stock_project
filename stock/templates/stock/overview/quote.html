@@ -8,30 +8,30 @@
       <div class="row">
         <div class="col-4">
             <h6 class="text-secondary"> AAPL Price﻿ </h6>
-            <h4>{{ price }}</h4>
+            <h4>{{ price|add_ch_end:'$' }}</h4>
         </div>
         <div class="col-4">
             <h6 class="text-secondary"> Market Cap﻿ </h6>
-            <h4>{{ marketCap }}</h4>
+            <h4>{{ marketCap|cap_format|add_ch_end:'T' }}</h4>
         </div>
         <div class="col-4">
             <h6 class="text-secondary"> Day Low </h6> 
-            <h4>{{ dayL }}</h4>
+            <h4>{{ dayL|add_ch_end:'$' }}</h4>
         </div>
       </div>
       <div class="row">
         <div class="col-4">
             <h6 class="text-secondary"> Day High </h6>
-            <h4>{{ dayH }}</h4>
+            <h4>{{ dayH|add_ch_end:'$' }}</h4>
 
         </div>
         <div class="col-4">
             <h6 class="text-secondary"> Year Low </h6>
-            <h4>{{ yearL }}</h4>
+            <h4>{{ yearL|add_ch_end:'$' }}</h4>
         </div>
         <div class="col-4">
             <h6 class="text-secondary"> Year High </h6>
-            <h4>{{ yearH }}</h4>
+            <h4>{{ yearH|add_ch_end:'$' }}</h4>
         </div>
       </div>
       <div class="row">
@@ -41,7 +41,7 @@
         </div>
         <div class="col-4">
             <h6 class="text-secondary"> Previous Price </h6>
-            <h4>{{ prePrice }}</h4>
+            <h4>{{ prePrice|add_ch_end:'$' }}</h4>
         </div>
         <div class="col-4">
             <h6 class="text-secondary"> Exchange </h6>
