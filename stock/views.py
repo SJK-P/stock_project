@@ -1,8 +1,8 @@
 from django.shortcuts import render
-import requests
+import requests, os
 
 def overview(request):
-    response = requests.get('https://financialmodelingprep.com/api/v3/quote/AAPL?apikey=demo')
+    response = requests.get(f"{os.getenv('API_URL')}/quote/AAPL?apikey={os.getenv('API_KEY')}")
     quote_data = response.json()[0]
     return render(request, 'stock/overview/quote.html', {
         'price': quote_data['price'],
