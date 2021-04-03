@@ -1,4 +1,5 @@
 {% extends "stock/base.html" %} 
+{% load stock_tags %}
 {% block title %}My Blog{% endblock %} 
 {% block card_title %}Apple Inc Stock{% endblock %}
 {% block content %}
@@ -36,7 +37,7 @@
       <div class="row">
         <div class="col-4">
             <h6 class="text-secondary"> Earnings Announcement </h6>
-            <h4>{{ earnAnnounce }}</h4>
+            <h4>{{ earnAnnounce|date_format:"%m-%d-%Y"}}</h4>
         </div>
         <div class="col-4">
             <h6 class="text-secondary"> Previous Price </h6>
