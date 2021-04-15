@@ -4,7 +4,7 @@ import requests, os
 def overview(request):
     response = requests.get(f"{os.getenv('API_URL')}/quote/AAPL?apikey={os.getenv('API_KEY')}")
     quote_data = response.json()[0]
-    return render(request, 'stock/overview/quote.html', {
+    return render(request, 'stock/company/overview.html', {
         'price': quote_data['price'],
         'dayL': quote_data['dayLow'],
         'dayH': quote_data['dayHigh'],
@@ -19,4 +19,4 @@ def overview(request):
 
 
 def earning(request):
-    return render(request, 'stock/overview/earning.html', {'earning': 'hello world!'})
+    return render(request, 'stock/company/earning.html', {'earning': 'hello world!'})
