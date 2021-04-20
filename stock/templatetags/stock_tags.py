@@ -1,5 +1,6 @@
 from django import template
 import datetime
+import math
 
 register = template.Library()
 
@@ -14,13 +15,6 @@ def date_format(value, format_string):
         return ''
 
 
-@register.filter(name='cap_format')
-def cap_format(value):
-    tril = 1000000000000
-    number = value/tril
-    return round(number, 2)
-
-
 @register.filter(is_safe=True)
 def add_ch(value, ch):
     return ch+str(value)
@@ -30,4 +24,16 @@ def add_ch_end(value, ch):
     return str(value)+ch
 
 
-        
+millnames = ['','K','M','B','T']
+
+@register.filter(name='millify')
+def millify(n):
+    n = float(n)
+    millidx = max(0,min(len(millnames)-1,
+                        int(math.floor(0 if n == 0 else math.log10(abs(n))/3))))
+
+    return '{:.2f}{}'.format(n / 10**(3 * millidx), millnames[millidx])
+
+@register.filter
+def percentage(value):
+    return format(value, ".1%")

@@ -4,50 +4,99 @@
 {% block card_title %}Apple Inc Stock{% endblock %}
 {% block content %}
 
-    <div class="container">
-      <div class="row">
-        <div class="col-4">
-            <h6 class="text-secondary"> AAPL Price﻿ </h6>
-            <h4>{{ price|add_ch_end:'$' }}</h4>
-        </div>
-        <div class="col-4">
-            <h6 class="text-secondary"> Market Cap﻿ </h6>
-            <h4>{{ marketCap|cap_format|add_ch_end:'T' }}</h4>
-        </div>
-        <div class="col-4">
-            <h6 class="text-secondary"> Day Low </h6> 
-            <h4>{{ dayL|add_ch_end:'$' }}</h4>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-4">
-            <h6 class="text-secondary"> Day High </h6>
-            <h4>{{ dayH|add_ch_end:'$' }}</h4>
 
+<div id="container" style="width: 30%">
+    <canvas id="myChart" width="100" height="100"></canvas>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-4">
+            <h6 class="text-secondary">{{symbol}} Price﻿</h6>
+            <h4>{{ price|millify|add_ch:'$' }}</h4>
         </div>
         <div class="col-4">
-            <h6 class="text-secondary"> Year Low </h6>
-            <h4>{{ yearL|add_ch_end:'$' }}</h4>
+            <h6 class="text-secondary">Fair Value Price</h6>
+            <h4>{{ fairValuePrice|millify|add_ch:'$' }}</h4>
         </div>
         <div class="col-4">
-            <h6 class="text-secondary"> Year High </h6>
-            <h4>{{ yearH|add_ch_end:'$' }}</h4>
+            <h6 class="text-secondary">Market Cap﻿</h6>
+            <h4>{{ marketCap|millify|add_ch:'$' }}</h4>
         </div>
-      </div>
-      <div class="row">
-        <div class="col-4">
-            <h6 class="text-secondary"> Earnings Announcement </h6>
-            <h4>{{ earnAnnounce|date_format:"%m-%d-%Y"}}</h4>
-        </div>
-        <div class="col-4">
-            <h6 class="text-secondary"> Previous Price </h6>
-            <h4>{{ prePrice|add_ch_end:'$' }}</h4>
-        </div>
-        <div class="col-4">
-            <h6 class="text-secondary"> Exchange </h6>
-            <h4>{{ exchange }}</h4>
-        </div>
-      </div>
     </div>
+    <div class="row">
+        <div class="col-4">
+            <h6 class="text-secondary">52 Week Low</h6>
+            <h4>{{ 52WeekL|millify|add_ch:'$' }}</h4>
+        </div>
+        <div class="col-4">
+            <h6 class="text-secondary">52 Week High</h6>
+            <h4>{{ 52WeekH|millify|add_ch:'$' }}</h4>
+        </div>
+        <div class="col-4">
+            <h6 class="text-secondary">P/E</h6>
+            <h4>{{ PE|floatformat:2|add_ch_end:'x' }}</h4>
+        </div>      
+    </div>
+    <div class="row">
+        <div class="col-4">
+            <h6 class="text-secondary">P/B</h6>
+            <h4>{{ PB|floatformat:2|add_ch_end:'x' }}</h4>
+        </div>
+        <div class="col-4">
+            <h6 class="text-secondary">P/S</h6>
+            <h4>{{ PS|floatformat:2|add_ch_end:'x' }}</h4>
+        </div> 
+        <div class="col-4">
+            <h6 class="text-secondary">PEG</h6>
+            <h4>{{ PEG|floatformat:2|add_ch_end:'x' }}</h4>
+        </div>     
+    </div>
+    <div class="row">
+        <div class="col-4">
+            <h6 class="text-secondary">Dividend Yield</h6>
+            <h4>{{ DividendYield|percentage }}</h4>
+        </div> 
+        <div class="col-4">
+            <h6 class="text-secondary">Revenue</h6>
+            <h4>{{ Revenue|millify|add_ch:'$' }}</h4>
+        </div>
+        <div class="col-4">
+            <h6 class="text-secondary">Earnings</h6>
+            <h4>{{ earning|millify|add_ch:'$' }}</h4>
+        </div>  
+    </div>
+    <div class="row">
+        <div class="col-4">
+            <h6 class="text-secondary">Gross Margin</h6>
+            <h4>{{ GrossMargin|percentage }}</h4>
+        </div> 
+        <div class="col-4">
+            <h6 class="text-secondary">Operating Margin</h6>
+            <h4>{{ OperatingMargin|percentage }}</h4>
+        </div>
+         <div class="col-4">
+            <h6 class="text-secondary">Profit Margin</h6>
+            <h4>{{ ProfitMargin|percentage }}</h4>
+        </div> 
+    </div>
+    <div class="row">
+        <div class="col-4">
+            <h6 class="text-secondary">Debt to Equity</h6>
+            <h4>{{ DebtEquity|floatformat:2 }}</h4>
+        </div> 
+        <div class="col-4">
+            <h6 class="text-secondary">Operating Cash Flow</h6>
+            <h4>{{ cashFlow|millify|add_ch:'$' }}</h4>
+        </div>
+        <div class="col-4">
+            <h6 class="text-secondary">Beta</h6>
+            <h4>{{ Beta|floatformat:2 }}</h4>
+        </div> 
+    </div>
+
+</div>
+
+
 
 {% endblock %}
