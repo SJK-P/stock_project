@@ -8,18 +8,28 @@ def overview(request):
     revenue = 0
     for income in data['financialsQuarter']['income'][0:4]:
         revenue += income['revenue'] 
-        # print(income['revenue'])
-
 
     cashFlow = 0
     for cash in data['financialsQuarter']['cash'][0:4]:
         cashFlow += cash['operatingCashFlow'] 
-        # pass
 
     earning = 0
     for income in data['financialsQuarter']['income'][0:4]:
         earning += income['netIncome'] 
-        # pass
+
+
+    res_historical_price = requests.get(f"{os.getenv('API_URL')}/api/v3/historical-price-full/AAPL?from=2021-03-20&to=2021-04-20&apikey={os.getenv('API_KEY')}")
+    historical_price = res_historical_price.json()
+    historicalP = historical_price['historical']
+
+    labels = []
+    historicalPrices = []
+    volumes = []
+    for item in historicalP:
+        labels.append(item['label'])
+        volumes.append(item['volume'])
+        historicalPrices.append(item['close'])
+
 
     return render(request, 'stock/company/overview.html', {
         'updatedDate': data['rating'][0]['date'],
@@ -42,9 +52,11 @@ def overview(request):
         'DebtEquity': data['ratios'][0]['debtEquityRatioTTM'],
         'Revenue': revenue,
         'cashFlow': cashFlow,
-        'earning': earning
+        'earning': earning,
+        'labels': labels,
+        'volumes': volumes,
+        'historicalPrices': historicalPrices
         })
-
 
 
 def earning(request):
